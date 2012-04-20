@@ -6,6 +6,6 @@ configure :production do
 end
 
 get '/' do
-  "hello"
-  #erb :index
+  #"hello"
+  erb :index
 end
