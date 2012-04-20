@@ -1,7 +1,11 @@
 require 'rubygems'
 require 'sinatra'
 
+configure :production do
+
+end
 
 get '/' do
-  erb :index
+  "hello"
+  #erb :index
 end
