@@ -3,5 +3,5 @@ require 'bundler'
 
 Bundler.require
 
-require 'index.rb'
+require './index.rb'
 run Sinatra::Application
