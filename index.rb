@@ -1,6 +1,10 @@
-require 'erb'
 
+
+configure do
 DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite3:db.sqlite3')
+end
+
+
 
 configure :production do
 
