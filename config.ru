@@ -1,7 +1,11 @@
 require 'rubygems'
-#require 'bundler'
+require 'dm-core'
+require 'dm-migrations'
+require 'dm-sqlite-adapter'
+require 'bundler'
+require 'erb'
 
-#Bundler.require
+Bundler.require
 
 require './index.rb'
 run Sinatra::Application

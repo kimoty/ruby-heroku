@@ -1,27 +1,36 @@
-require 'rubygems'
-require 'sinatra'
-require 'sequel'
-require 'dm-core'
-require 'dm-migrations'
+require 'erb'
 
-DataMapper::setup(:default, ENV['DATABASE_URL'] || 'sqlite3://db.sqlite3')
-
-
+DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite3:db.sqlite3')
 
 configure :production do
 
 end
 
 
-#class Todo
-#	include DataMapper::Resource
-#	property :id, Serial
-#	property :todo, Text
-#	auto_upgrade!
-#end
+class Todo
+  include DataMapper::Resource
+  property :id, Serial
+  property :todo, String
+  auto_upgrade!
+end
 
 
 get '/' do
-  #"hello"
   erb :index
+end
+
+get '/todo' do
+  @todos = Todo.all
+  erb :todo
+end
+
+
+post '/todo' do
+  Todo.create(:todo => params[:todo])
+  redirect '/todo'
+end
+
+
+helpers do
+  include Rack::Utils; alias_method :h, :escape_html
 end
