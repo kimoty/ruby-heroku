@@ -1,7 +1,7 @@
-
-
+require './todo.rb'
 configure do
-DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite3:db.sqlite3')
+  DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite3:db.sqlite3')
+  DataMapper.finalize
 end
 
 
@@ -11,12 +11,6 @@ configure :production do
 end
 
 
-class Todo
-  include DataMapper::Resource
-  property :id, Serial
-  property :todo, String
-  auto_upgrade!
-end
 
 
 get '/' do

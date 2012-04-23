@@ -1,6 +1,4 @@
 source :rubygems
 gem 'sinatra'
-gem 'sequel'
-gem 'dm-core'
-gem 'dm-migrations'
+gem 'data_mapper'
 gem 'dm-sqlite-adapter'

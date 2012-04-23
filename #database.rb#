@@ -1,0 +1,8 @@
+require './todo.rb'
+
+task 'db:migrate' do
+  DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite3:db.sqlite3')
+  auto_upgrade!
+end
+
+
