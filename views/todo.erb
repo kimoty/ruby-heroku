@@ -26,7 +26,8 @@
       	<tr>
 		<td><%= h todo[:name] %></td>
 		<td><%= h todo[:todo] %></td>
-		<td><%= h todo[:dateTime].strftime("%Y/%m/%d %H:%M:%S") %></td>
+		<!-- <td><%= h todo[:dateTime].strftime("%Y/%m/%d %H:%M:%S") %></td> -->
+		<td><%= h todo[:dateTime] %></td>
 		<td><input type='hidden' name='_method' value='delete' />
 		<input type="submit" value="削除" /></td>
 	</tr>
