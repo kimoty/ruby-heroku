@@ -18,13 +18,19 @@ get '/' do
 end
 
 get '/todo' do
-  @todos = Todo.all
+  @todos = Todo.all.reverse
   erb :todo
 end
 
 
 post '/todo' do
-  Todo.create(:todo => params[:todo])
+  Todo.create(:name => params[:name],:todo => params[:todo],:dateTime => Time.now)
+  redirect '/todo'
+end
+
+delete '/todo/:id' do
+  todo = Todo.get(params[:id])
+  todo.destroy
   redirect '/todo'
 end
 

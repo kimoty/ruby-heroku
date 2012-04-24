@@ -1,20 +1,35 @@
 <form method="post" action="/todo">
-<input type="text" name="todo">
-<input type="submit" value="追加">
+<table>
+<tr>
+<td>name</td>
+<td><input type="text" name="name" /></td>
+</tr>
+<tr>
+<td>todo</td>
+<td><textarea name="todo" rows='4' cols='100'></textarea></td>
+</tr>
+</table>
+<input type="submit" value="追加" />
 </form>
 
 
 
-<table border = 1>
-<% @todos.each {|todo| %>
+<table border="1">
 <tr>
-<td>
-<%= h todo[:id] %>
-</td>
-
-<td>
-<%= h todo[:todo] %>
-</td>
+<th>name</th>
+<th>todo</th>
+<th>dateTime</th>
+<th></th>
 </tr>
+<% @todos.each {|todo| %>
+<form method="post" action="/todo/<%= h todo[:id] %>">
+      	<tr>
+		<td><%= h todo[:name] %></td>
+		<td><%= h todo[:todo] %></td>
+		<td><%= h todo[:dateTime].strftime("%Y/%m/%d %H:%M:%S") %></td>
+		<td><input type='hidden' name='_method' value='delete' />
+		<input type="submit" value="削除" /></td>
+	</tr>
+</form>
 <% } %>
 </table>
